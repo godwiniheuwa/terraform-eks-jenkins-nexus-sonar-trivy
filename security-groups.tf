@@ -101,7 +101,7 @@ resource "aws_security_group" "jenkins_sg" {
     Name = "jenkins-sg"
   }
 }
-## Jenkins  ends
+# Jenkins  ends
 
 #Nexus Security Group starts
 resource "aws_security_group" "nexus_sg" {
@@ -260,5 +260,55 @@ resource "aws_security_group_rule" "eks_node_ingress" {
   security_group_id = aws_security_group.eks_node.id
 }
 
-
 # EKS ends
+
+#Prometheus and Grafana Security Group
+resource "aws_security_group" "prometheus_grafana_sg" {
+  name_prefix = "prometheus-grafana-sg"
+  description = "Allow access to Prometheus and Grafana"
+
+   # SSH port
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Prometheus port
+  ingress {
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Docker daemon port
+  ingress {
+    from_port   = 2376
+    to_port     = 2376
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow Docker daemon"
+  }
+
+  # Grafana port
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "prometheus-grafana-sg"
+  }
+}
+#Prometheus and Grafana ends

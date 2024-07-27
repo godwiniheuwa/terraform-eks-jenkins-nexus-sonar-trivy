@@ -7,7 +7,6 @@ variable "key_name" {
 }
 
 
-
 ##Kubernetest variables
 
 variable "vpc_cidr" {
