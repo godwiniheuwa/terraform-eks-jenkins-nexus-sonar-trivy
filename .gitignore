@@ -22,4 +22,4 @@ override.tf.json
 *_override.tf.json
 
 # Ignore specific file names
-# terraform.tfvars
+terraform.tfvars
