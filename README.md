@@ -32,6 +32,7 @@ This repository contains Terraform configurations for setting up an AWS EKS clus
 ```sh
 git clone https://github.com/godwiniheuwa/terraform-eks-jenkins-nexus-sonar-trivy.git
 cd terraform-eks-jenkins-nexus-sonar-trivy
+```
 
 ### Step 2: Configure Variables
 
@@ -41,11 +42,13 @@ cd terraform-eks-jenkins-nexus-sonar-trivy
 
 ```sh
 terraform init
+```
 
 ### Step 4: Apply Terraform Configuration
 
 ```sh
 terraform init --auto-approve
+```
 
 ### Outputs
 The Terraform configuration outputs the public IP addresses of the EC2 instances and other relevant information.
@@ -54,8 +57,8 @@ The Terraform configuration outputs the public IP addresses of the EC2 instances
 - **EKS Cluster Endpoint**: The endpoint for accessing the EKS cluster.
 - **Jenkins URL**: The URL for accessing the Jenkins server.
 - **Nexus URL**: The URL for accessing the Nexus Repository Manager.
-- **Prometheus URL**: The URL for accessing the Prometheus server. (public_ip:9090)
-- **Grafana URL**: The URL for accessing the Grafana dashboard.(public_ip:3000)
+- **Prometheus URL**: The URL for accessing the Prometheus server. (```http://public_ip:9090```)
+- **Grafana URL**: The URL for accessing the Grafana dashboard.(```http://public_ip:3000```)
 - **SonarQube URL**: The URL for accessing the SonarQube server.
 
 ### Contributing
